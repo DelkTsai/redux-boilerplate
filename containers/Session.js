@@ -25,7 +25,7 @@ class Session extends Component {
 
   render() {
     return (
-      <div className="wrapper">
+      <div className="">
         <header className="main-header">
           <nav className="navbar navbar-static-top" style={{marginLeft: 0}}>
             <div className="navbar-header">

@@ -3,14 +3,18 @@ import Immutable from 'immutable'
 import thunk from 'redux-thunk'
 import createLogger from 'redux-logger'
 import rootReducer from '../reducers'
+import { routerMiddleware } from 'react-router-redux'
+import { browserHistory } from 'react-router'
 import DevTools from '../containers/DevTools'
+
+const middleware = routerMiddleware(browserHistory)
 
 export default function configureStore(initialState) {
   const store = createStore(
     rootReducer,
     initialState,
     compose(
-      applyMiddleware(thunk, createLogger({
+      applyMiddleware(thunk, middleware, createLogger({
         stateTransformer: (state) => {
           var newState = {};
           for (var i of Object.keys(state)) {

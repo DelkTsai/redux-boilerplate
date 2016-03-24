@@ -16,13 +16,13 @@ const initialState = Immutable.fromJS({
 
 export default createReducer(initialState, {
 
-  [ActionTypes.FETCH_SESSION_REQUEST](state, action) {
+  [ActionTypes.FETCH_MESSAGE_REQUEST](state, action) {
     return state.withMutations(map => {
       map.setIn(['read', 'isRequesting'], true)
     })
   },
 
-  [ActionTypes.FETCH_SESSION_SUCCESS](state, action) {
+  [ActionTypes.FETCH_MESSAGE_SUCCESS](state, action) {
     return state.withMutations(map => {
       map.setIn(['read', 'isRequesting'], false)
         .setIn(['read', 'isSuccessed'], true)
@@ -30,7 +30,7 @@ export default createReducer(initialState, {
     })
   },
 
-  [ActionTypes.FETCH_SESSION_FAILURE](state, action) {
+  [ActionTypes.FETCH_MESSAGE_FAILURE](state, action) {
     return state.withMutations(map => {
       map.setIn(['read', 'isRequesting'], false)
         .setIn(['read', 'isFailure'], true)
@@ -38,3 +38,4 @@ export default createReducer(initialState, {
     })
   },
 })
+

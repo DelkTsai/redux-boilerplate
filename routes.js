@@ -1,17 +1,12 @@
 import React from 'react'
-import { Route } from 'react-router'
-import Init from './containers/Init'
-import Session from './containers/Session'
+import { Route, IndexRoute } from 'react-router'
+import App from './containers/App'
 import Dashboard from './containers/Dashboard'
-import Foo from './containers/Foo'
-import createBrowserHistory from 'history/lib/createBrowserHistory'
-
-const  history = createBrowserHistory()
+import Setting from './containers/Setting'
 
 export default (
-  <Route path="/" component={Init}>
-    <Route component={Session}>
-      <Route path="dashboard" component={Dashboard} />
-    </Route>
+  <Route path="/" component={App}>
+    <IndexRoute component={Dashboard} />
+    <Route path="setting" component={Setting} />
   </Route>
 )

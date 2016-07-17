@@ -5,26 +5,27 @@ module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: {
     app: [
-    'webpack-hot-middleware/client',
-    './index'
+      'webpack-hot-middleware/client',
+      './index',
     ],
     vendor: [
-      'bootstrap/dist/css/bootstrap.min.css',
-      'admin-lte/dist/css/AdminLTE.min.css',
-      'admin-lte/dist/css/skins/_all-skins.min.css',
-      'font-awesome/css/font-awesome.min.css',
+      'antd/dist/antd.min.css',
     ]
   },
   output: {
     path: path.join(__dirname, 'dist', 'assets'),
     filename: "[name].js",
-    publicPath: '/static/'
+    publicPath: '/assets/'
   },
   resolve:{
     extensions:['', '.js', '.json'],
     modulesDirectories: ['bower_components', 'node_modules', './'],
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      'Promise': 'exports?global.Promise!es6-promise',
+      'fetch': 'exports?self.fetch!whatwg-fetch'
+    }),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),

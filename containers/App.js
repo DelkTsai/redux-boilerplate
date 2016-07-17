@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Menu, Icon, Switch } from 'antd'
+import { Menu, Icon } from 'antd'
 const SubMenu = Menu.SubMenu
 
 class App extends Component {
@@ -10,9 +10,6 @@ class App extends Component {
     super(props, context)
     this.renderSidebar = this.renderSidebar.bind(this)
     this.handleClickSidebar = this.handleClickSidebar.bind(this)
-  }
-
-  componentWillMount() {
   }
 
   handleClickSidebar(e) {

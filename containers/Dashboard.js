@@ -1,8 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Card, Col, Row } from 'antd'
-
 
 class Dashboard extends Component {
 
@@ -23,7 +21,9 @@ class Dashboard extends Component {
       padding: '30px'
     }
     return (
-      <div style={style}></div>
+      <div style={style}>
+        <h1>Dashboard</h1>
+      </div>
     )
   }
 }

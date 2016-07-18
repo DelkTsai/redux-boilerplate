@@ -1,22 +1,26 @@
 import React, { Component, PropTypes } from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
+
+// 引入 antd 组件
 import { Menu, Icon } from 'antd'
 const SubMenu = Menu.SubMenu
 
-class App extends Component {
+export default class App extends Component {
 
   constructor(props, context) {
     super(props, context)
+
+    // 绑定两个函数的上下文
     this.renderSidebar = this.renderSidebar.bind(this)
     this.handleClickSidebar = this.handleClickSidebar.bind(this)
   }
 
+  // 处理点击导航栏动作 进行跳转
   handleClickSidebar(e) {
     const { dispatch } = this.props
     dispatch(push(e.key))
   }
 
+  // 渲染左导航
   renderSidebar() {
     return (
       <Menu theme="dark"
@@ -39,11 +43,14 @@ class App extends Component {
   }
 
   render() {
+    // 样式
     const style = {
       backgroundColor: '#404040',
       height: document.documentElement.clientHeight,
       overflowY: 'auto'
     }
+    // 此 container 最终渲染的内容
+    // this.props.children 指 Router 上挂载的下一级 container
     return (
       <div className="ant-row">
         <div style={style} className="ant-col-xs-24 ant-col-sm-24 ant-col-md-6 ant-col-lg-4">
@@ -56,12 +63,3 @@ class App extends Component {
     )
   }
 }
-
-const mapStateToProps = (state) => ({
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  dispatch
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);

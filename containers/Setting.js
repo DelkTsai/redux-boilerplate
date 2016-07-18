@@ -1,12 +1,16 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+
+// 引入 antd 组件
 import { Card, Table, Button, Form, Input, Select } from 'antd'
 const FormItem = Form.Item
 import FormModal from '../components/FormModal'
 
+// 引入 action
 import * as MemberActions from '../actions/member'
 
+// 定义表头
 const columns = [{
   title: '昵称',
   dataIndex: 'name',
@@ -23,17 +27,20 @@ const columns = [{
 
 class Setting extends Component {
 
+  // 初始化
   constructor(props, context) {
     super(props, context)
     this.renderForm = this.renderForm.bind(this)
     this.handleAddEmployee = this.handleAddEmployee.bind(this)
   }
 
+  // 待挂载 发起请求数据的动作
   componentWillMount() {
     const { memberAction } = this.props
     memberAction.fetch()
   }
 
+  // 渲染添加成员表单
   renderForm(value={}) {
     const formItemLayout = {
       labelCol: { span: 4 },
@@ -67,11 +74,13 @@ class Setting extends Component {
     }
   }
 
+  // 处理添加成员的动作
   handleAddEmployee(info) {
     const { memberAction, employee, params } = this.props;
     memberAction.add(info)
   }
 
+  // 渲染
   render() {
     const style = {
       height: document.documentElement.clientHeight,
@@ -95,12 +104,15 @@ class Setting extends Component {
   }
 }
 
+// 绑定 member 资源
 const mapStateToProps = (state) => ({
   member: state.member.toJS(),
 })
 
+// 绑定 memberAction
 const mapDispatchToProps = (dispatch) => ({
   memberAction: bindActionCreators(MemberActions, dispatch),
 })
 
+// connect
 export default connect(mapStateToProps, mapDispatchToProps)(Setting);

@@ -2,6 +2,7 @@ import _ from 'lodash'
 import Immutable from 'immutable'
 import { createReducer } from '../lib/utils'
 
+// 定义数据结构
 const initialState = Immutable.fromJS({
   resource: null,
   isRequesting: false,
@@ -9,6 +10,8 @@ const initialState = Immutable.fromJS({
   error: null,
 })
 
+
+// 对监听到的 actions 进行处理
 export default createReducer(initialState, {
   ["FETCH_MEMBER_REQUEST"](state, action) {
     return state.withMutations(map => {
